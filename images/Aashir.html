@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.main-container {
+    display: grid;
+    grid-template-columns: 315px 1fr;
+    gap: 3px;
+    width: 1040px;
+    margin: 20px auto;
+    align-items: start;
+}
+
+/* Capsules - Left side */
+.capsules {
+    height: 400px;
+    background-color: #28103e;
+    border-radius: 3px;
+    padding: 25px 20px;
+    color: white;
+}
+
+.capsules h2 {
+    font-size: 20px;
+    margin-bottom: 15px;
+}
+
+.capsules p {
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.capsules img {
+    width: 100%;
+    height: 240px;
+    object-fit: contain;
+}
+
+/* Right side cards */
+.products {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: 180px 100px;
+    gap: 3px;
+    align-items: stretch;
+    margin-top: 0;
+}
+
+/* All cards */
+.card {
+    background-color: #69318e;
+    color: white;
+    padding: 20px;
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.card h2 {
+    font-size: 17px;
+    margin-bottom: 10px;
+}
+
+.card img {
+    width: 100%;
+    height: calc(100% - 30px);
+    object-fit: contain;
+}
+
+/* Top row */
+.chocolates {
+    grid-column: span 3;
+}
+
+.gummies {
+    grid-column: span 3;
+}
+
+/* Bottom row */
+.drinks {
+    grid-column: span 2;
+}
+
+.dried-caps {
+    grid-column: span 2;
+}
+
+.tea {
+    grid-column: span 2;
+}
+    </style>
+</head>
+
+<body>
+    
+<div class="main-container">
+    <div class="capsules">
+      
+        <p>Your description here...</p>
+        <img src="./image1.png" alt="firstImage">
+    </div>
+
+    <div class="products">
+
+        <div class="card chocolates">
+            
+            <img src="./image 2.png" alt="Chocolates">
+        </div>
+
+        <div class="card gummies">
+            
+            <img src="./image 3.png" alt="Gummies">
+        </div>
+
+        <div class="card drinks">
+           
+            <img src="./image 4.png" alt="Drinks">
+        </div>
+
+        <div class="card dried-caps">
+           
+            <img src="./image 5.png" alt="Dried Caps">
+        </div>
+
+        <div class="card tea">
+          
+            <img src="./image 6.png" alt="Tea">
+        </div>
+        <div>
+            <img src="./image 7.png" alt="mushroom"
+        </div>
+
+
+</body>
+</html>
+

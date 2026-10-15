@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Navigation</title>
+
+    <style>
+     
+        
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: white;
+    overflow-x: hidden;
+}
+
+.navigation {
+    width: 100%;
+    min-height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 12px;
+    gap: 0;
+    white-space: nowrap;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    flex-shrink: 0;
+}
+
+.nav-links + .nav-links {
+    margin-left: 28px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #41414a;
+    font-size: 12px;
+    font-weight: 400;
+    transition: color 0.2s ease;
+}
+
+.nav-links a:hover {
+    color: #321653;
+}
+
+.nav-links a.active {
+    color: #321653;
+    font-weight: 600;
+}
+
+.nav-divider {
+    height: 30px;
+    border-left: 2px dotted #168bff;
+    margin: 0 20px;
+}
+
+.search-box {
+    display: flex;
+    align-items: center;
+    background: #f5f5f6;
+    width: 200px;
+    height: 30px;
+    margin-left: 175px;
+    padding: 0 30px;
+    flex-shrink: 1;
+    min-width: 0;
+}
+
+.search-box input {
+    width: 100%;
+    min-width: 0;
+    border: none;
+    outline: none;
+    background: transparent;
+    font-size: 9px;
+}
+
+.search-box button {
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    font-size: 16px;
+    flex-shrink: 0;
+}
+
+@media (max-width: 850px) {
+    .navigation {
+        justify-content: flex-start;
+        overflow-x: auto;
+    }
+
+    .nav-links {
+        gap: 18px;
+    }
+
+    .nav-links + .nav-links {
+        margin-left: 18px;
+    }
+
+    .search-box {
+        margin-left: 20px;
+        min-width: 150px;
+    }
+}
+
+
+  /* BASIC RESET */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        /* NAVBAR */
+        .navigation {
+            width: 100%;
+            min-height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 28px;
+            padding: 8px 15px;
+            background-color: #ffffff;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+            flex-shrink: 0;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #41414a;
+            font-size: 12px;
+            font-weight: 400;
+            white-space: nowrap;
+            transition: color 0.2s ease;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: #321653;
+        }
+
+        .nav-links a.active {
+            font-weight: 600;
+        }
+
+        /* SEARCH BOX */
+        .search-box {
+            display: flex;
+            align-items: center;
+            width: 195px;
+            height: 32px;
+            padding: 0 10px;
+            margin-left: 10px;
+            background-color: #f5f5f6;
+            flex-shrink: 1;
+            min-width: 0;
+        }
+
+        .search-box input {
+            width: 100%;
+            min-width: 0;
+            border: none;
+            outline: none;
+            background: transparent;
+            font-size: 10px;
+        }
+
+        .search-box button {
+            border: none;
+            background: transparent;
+            font-size: 17px;
+            cursor: pointer;
+            color: #333333;
+        }
+
+        /* PRODUCTS SECTION */
+        .product-section {
+            width: 100%;
+            padding: 12px 15px 25px;
+            background-color: #ffffff;
+        }
+
+        /* FOUR PRODUCTS PER ROW */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            column-gap: 12px;
+            row-gap: 22px;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* CLICKABLE PRODUCT CARD */
+        .product-card {
+            min-width: 0;
+            text-align: center;
+            border: none;
+            outline: none;
+            background-color: #ffffff;
+        }
+
+        .product-link {
+            display: block;
+            width: 100%;
+            height: 100%;
+            color: inherit;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        /* PRODUCT IMAGE */
+        .product-card img {
+            display: block;
+            width: 100%;
+            height: 145px;
+            object-fit: contain;
+            margin-bottom: 8px;
+            transition: transform 0.25s ease;
+        }
+
+        /* IMAGE HOVER */
+        .product-link:hover img {
+            transform: scale(1.04);
+        }
+
+        /* PRODUCT TITLE */
+        .product-card h4 {
+            font-size: 11px;
+            font-weight: 500;
+            line-height: 1.4;
+            color: #222222;
+            margin: 4px 0;
+            transition: color 0.2s ease;
+        }
+
+        /* TITLE HOVER */
+        .product-link:hover h4 {
+            color: #321653;
+        }
+
+        /* PRODUCT DESCRIPTION */
+        .product-card p {
+            font-size: 10px;
+            line-height: 1.4;
+            color: #444444;
+            margin: 3px 0;
+        }
+
+        /* PRODUCT PRICE */
+        .product-card strong {
+            display: block;
+            font-size: 11px;
+            font-weight: 600;
+            color: #111111;
+            margin-top: 5px;
+        }
+
+        /* REMOVE BLUE LINK STYLING */
+        .product-link:visited,
+        .product-link:active {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .product-card:focus,
+        .product-link:focus {
+            outline: none;
+        }
+
+        /* PAGINATION */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+            margin-top: 25px;
+        }
+
+        .page-number {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 25px;
+            height: 25px;
+            color: #555555;
+            font-size: 11px;
+            text-decoration: none;
+            border: 1px solid transparent;
+        }
+
+        .page-number:hover {
+            color: #321653;
+        }
+
+        .page-number.active {
+            border: 1px solid #dddddd;
+            border-radius: 50%;
+            color: #321653;
+        }
+
+        /* TABLET */
+        @media (max-width: 850px) {
+            .navigation {
+                justify-content: flex-start;
+                overflow-x: auto;
+                gap: 20px;
+            }
+
+            .nav-links {
+                gap: 18px;
+            }
+
+            .search-box {
+                min-width: 150px;
+            }
+
+            .products-grid {
+                grid-template-columns: repeat(4, minmax(0, 1fr));
+                gap: 18px 10px;
+            }
+
+            .product-card img {
+                height: 125px;
+            }
+        }
+
+        /* MOBILE */
+        @media (max-width: 600px) {
+            .product-section {
+                padding: 10px;
+            }
+
+            .products-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 18px 10px;
+            }
+
+            .product-card img {
+                height: 130px;
+            }
+
+            .product-card h4 {
+                font-size: 10px;
+            }
+
+            .product-card p,
+            .product-card strong {
+                font-size: 10px;
+            }
+        }
+
+    </style>
+    <header>
+        <section style="background-color: #2D1343;  width: 1413px; height: 367px; ">
+            <div>
+                <h1 style="text-align: center; color: #FFFFFF; padding-top: 110px; margin-bottom: 10px;    ">More Than Just Products</h1>
+                <p style="text-align: center; align-items: center;font-family: Lato;
+font-weight: 400;
+width: 600px;
+font-style: Regular;
+font-size: 18px;
+line-height: 100%;
+letter-spacing: 0%;
+color: #FFFFFF;
+margin-left:380px;
+margin: 0 auto;
+
+
+">Experience gentle, yet profound changes with our precisely dosed mushroom-infused gummies,
+                    chocolates, drinks, and teas. Boost focus, elevate mood, and ignite creativity - all delivered
+                    directly to your doorstep for ultimate ease and discretion.</p>
+            </div>
+        </section>
+    </header>
+</head>
+
+<body>
+
+    <nav class="navigation">
+
+        <div class="nav-links">
+            <a href="index.html">All</a>
+            <a href="dried-caps.html">Dried Caps</a>
+            <a href="gummies.html">Gummies</a>
+            <a href="capsules.html">Capsules</a>
+            <a href="chocolates.html">Chocolates</a>
+            <a href="tea.html">Tea</a>
+        </div>
+
+        <!-- <div class="nav-divider"></div> -->
+
+        <div class="nav-links">
+            <a href="drinks.html">Drinks</a>
+            <a href="other.html">Other</a>
+        </div>
+
+        <form class="search-box" action="search.html" method="get">
+            <input type="search" name="q" placeholder="What are you looking for?">
+            <button type="submit" aria-label="Search">⌕</button>
+        </form>
+
+    </nav>
+
+
+   
+
+
+    
+
+    <!-- PRODUCTS SECTION -->
+    <section class="product-section">
+
+        <div class="products-grid">
+
+            <div class="product-card">
+                <a href="product1.html" class="product-link">
+                    <img src="./images/cnady.png" alt="Product 1">
+                    <h4>250mg Magic Mushroom </h4>
+                    <p>Gummies (10 Pieces)</p>
+                    <strong>$25.00</strong>
+                </a>
+            </div>
+
+            <div class="product-card">
+                <a href="product2.html" class="product-link">
+                    <img src="./images/cnady.png" alt="Product 2">
+                    <h4>250mg Magic Mushroom </h4>
+                    <p>Gummies (10 Pieces)</p>
+                    <strong>$25.00</strong>
+                </a>
+            </div>
+
+            <div class="product-card">
+                <a href="product3.html" class="product-link">
+                    <img src="./images/cnady.png" alt="Product 3">
+                    <h4>250mg Magic Mushroom </h4>
+                    <p>Gummies (10 Pieces)</p>
+                    <strong>$25.00</strong>
+                </a>
+            </div>
+
+            <div class="product-card">
+                <a href="product4.html" class="product-link">
+                    <img src="./images/cnady.png" alt="Product 4">
+                    <h4>250mg Magic Mushroom </h4>
+                    <p>Gummies (10 Pieces)</p>
+                    <strong>$25.00</strong>
+                </a>
+            </div>
+
+            <div class="product-card">
+                <a href="product5.html" class="product-link">
+                    <img src="./images/cnady.png" alt="Product 5">
+                    <h4>250mg Magic Mushroom </h4>
+                    <p>Gummies (10 Pieces)</p>
+                    <strong>$25.00</strong>
+                </a>
+            </div>
+
+            <div class="product-card">
+                <a href="product6.html" class="product-link">
+                    <img src="./images/cnady.png" alt="Product 6">
+                    <h4>250mg Magic Mushroom </h4>
+                    <p>Gummies (10 Pieces)</p>
+                    <strong>$25.00</strong>
+                </a>
+            </div>
+
+            <div class="product-card">
+                <a href="product7.html" class="product-link">
+                    <img src="./images/cnady.png" alt="Product 7">
+                    <h4>250mg Magic Mushroom </h4>
+                    <p>Gummies (10 Pieces)</p>
+                    <strong>$25.00</strong>
+                </a>
+            </div>
+
+            <div class="product-card">
+                <a href="product8.html" class="product-link">
+                    <img src="./images/cnady.png" alt="Product 8">
+                    <h4>250mg Magic Mushroom </h4>
+                    <p>Gummies (10 Pieces)</p>
+                    <strong>$25.00</strong>
+                </a>
+            </div>
+
+            <div class="product-card">
+                <a href="product9.html" class="product-link">
+                    <img src="./images/cnady.png" alt="Product 9">
+                    <h4>250mg Magic Mushroom </h4>
+                    <p>Gummies (10 Pieces)</p>
+                    <strong>$25.00</strong>
+                </a>
+            </div>
+
+            <div class="product-card">
+                <a href="product10.html" class="product-link">
+                    <img src="./images/cnady.png" alt="Product 10">
+                    <h4>250mg Magic Mushroom </h4>
+                    <p>Gummies (10 Pieces)</p>
+                    <strong>$25.00</strong>
+                </a>
+            </div>
+
+            <div class="product-card">
+                <a href="product11.html" class="product-link">
+                    <img src="./images/cnady.png" alt="Product 11">
+                    <h4>250mg Magic Mushroom </h4>
+                    <p>Gummies (10 Pieces)</p>
+                    <strong>$25.00</strong>
+                </a>
+            </div>
+
+            <div class="product-card">
+                <a href="product12.html" class="product-link">
+                    <img src="./images/cnady.png" alt="Product 12">
+                    <h4>250mg Magic Mushroom </h4>
+                    <p>Gummies (10 Pieces)</p>
+                    <strong>$25.00</strong>
+                </a>
+            </div>
+
+            <div class="product-card">
+                <a href="product13.html" class="product-link">
+                    <img src="./images/cnady.png" alt="Product 13">
+                    <h4>250mg Magic Mushroom </h4>
+                    <p>Gummies (10 Pieces)</p>
+                    <strong>$25.00</strong>
+                </a>
+            </div>
+
+            <div class="product-card">
+                <a href="product14.html" class="product-link">
+                    <img src="./images/cnady.png" alt="Product 14">
+                    <h4>250mg Magic Mushroom </h4>
+                    <p>Gummies (10 Pieces)</p>
+                    <strong>$25.00</strong>
+                </a>
+            </div>
+
+            <div class="product-card">
+                <a href="product15.html" class="product-link">
+                    <img src="./images/cnady.png" alt="Product 15">
+                    <h4>250mg Magic Mushroom </h4>
+                    <p>Gummies (10 Pieces)</p>
+                    <strong>$25.00</strong>
+                </a>
+            </div>
+
+            <div class="product-card">
+                <a href="product16.html" class="product-link">
+                    <img src="./images/cnady.png" alt="Product 16">
+                    <h4>250mg Magic Mushroom </h4>
+                    <p>Gummies (10 Pieces)</p>
+                    <strong>$25.00</strong>
+                </a>
+            </div>
+
+        </div>
+
+        <!-- PAGINATION -->
+        <div class="pagination">
+            <a href="index.html" class="page-number active">1</a>
+            <a href="page2.m  html" class="page-number">2</a>
+            <a href="page3.html" class="page-number">3</a>
+            <a href="page2.html" class="page-number" aria-label="Next page">&rsaquo;</a>
+        </div>
+
+    </section>
+
+
+</body>
+
+</html>
